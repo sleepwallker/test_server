@@ -7,7 +7,8 @@ class MainHandler(tornado.web.RequestHandler):
 
     def post(self):
         self.set_header("Content-Type", "text/plain")
-        self.write("You wrote " + self.request.body("message"))
+        self.write("You wrote " + self.request.body())
+
 
 # This tells tornado where to find the static files
 setting = dict(
@@ -25,5 +26,7 @@ apllication = tornado.web.Application([
 if __name__ == "__main__":
     print('Server Running...')
     print('Press ctrl + c to close')
+    print('request accepted')
+    print('close window')
     apllication.listen(8889)
     tornado.ioloop.IOLoop.instance().start()
