@@ -1,6 +1,7 @@
 import tornado.ioloop
 import tornado.web
 import os.path
+import requests
 
 
 class MainHandler(tornado.web.RequestHandler):
@@ -8,6 +9,14 @@ class MainHandler(tornado.web.RequestHandler):
     def post(self):
         self.set_header("Content-Type", "text/plain")
         self.write("You wrote " + self.request.body())
+        print('{}\n{}\n{}\n\n{}'.format(
+            req.method + ' ' + req.url,
+            '\n'.join('{}: {}'.format(k, v) for k, v in req.headers.items()),
+            req.body,
+        ))
+
+
+
 
 
 # This tells tornado where to find the static files
